@@ -1,0 +1,49 @@
+			#PROJETO DADOS DO COVID 19 UTILIZANDO O GOOGLE BIG QUERY#
+
+
+**- Extração dos dados do Covid 19 (https://covid.saude.gov.br/   -   https://covid19.who.int/data)**
+
+**- Utilizamos o Google Cloud Storage para armazenar os dados**
+
+**- transformamos os dados para CSV utilizando ":" como delimitador**
+
+**- Criamos um bucket no google cloud storage e importamos os dados para esse bucket**
+
+**- Dentro do Bigquery, crie um dataset (nome que achar melhor)**
+
+**- Dentro do dataset vá em "create table"**
+
+**- Importe o arquivo "WHO-COVID-19-global-data" do google storage**
+
+**- No print, testamos os campos da coluna "Country code" que não são vazios utilizando a query**
+select * from Covid.dados_covid_global 
+where _Country_code != " ";
+
+
+**- Tratamento de análise dos dados importados (tabela covid_nacional)**
+
+SELECT replace (_regiao_,"'","") as Regiao
+      ,count(*) as qtde
+from `Covid.dados_covid_nacional`
+GROUP BY 1
+union all
+select "Total" as Total
+      ,count(*) as qtde
+from Covid.dados_covid_nacional;
+
+SELECT case when _estado_ is null then "ND" else replace (_estado_,"'","") end as Estado
+      ,count(*) as qtde
+from `Covid.dados_covid_nacional`
+GROUP BY 1
+union all
+select "Total" as Total
+      ,count(*) as qtde
+from Covid.dados_covid_nacional;
+
+
+select * from Covid.dados_covid_nacional where _estado_ is null;
+
+
+
+
+###**Link da vídeo aula: https://www.youtube.com/watch?v=6nYXBJB5Kn8&list=PLsyobOqUhkthzWvLIZVmXZD-KriTMGtn0&index=3  **###
