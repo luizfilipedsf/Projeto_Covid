@@ -46,4 +46,4 @@ select * from Covid.dados_covid_nacional where _estado_ is null;
 
 
 
-###**Link da vídeo aula: https://www.youtube.com/watch?v=6nYXBJB5Kn8&list=PLsyobOqUhkthzWvLIZVmXZD-KriTMGtn0&index=3  **###
+###**Link da vídeo aula: (https://www.youtube.com/watch?v=6nYXBJB5Kn8&list=PLsyobOqUhkthzWvLIZVmXZD-KriTMGtn0&index=3)  **###
