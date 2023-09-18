@@ -16,32 +16,10 @@
 **- Importe o arquivo "WHO-COVID-19-global-data" do google storage**
 
 **- No print, testamos os campos da coluna "Country code" que não são vazios utilizando a query**
-select * from Covid.dados_covid_global 
-where _Country_code != " ";
+
 
 
 **- Tratamento de análise dos dados importados (tabela covid_nacional)**
-
-SELECT replace (_regiao_,"'","") as Regiao
-      ,count(*) as qtde
-from `Covid.dados_covid_nacional`
-GROUP BY 1
-union all
-select "Total" as Total
-      ,count(*) as qtde
-from Covid.dados_covid_nacional;
-
-SELECT case when _estado_ is null then "ND" else replace (_estado_,"'","") end as Estado
-      ,count(*) as qtde
-from `Covid.dados_covid_nacional`
-GROUP BY 1
-union all
-select "Total" as Total
-      ,count(*) as qtde
-from Covid.dados_covid_nacional;
-
-
-select * from Covid.dados_covid_nacional where _estado_ is null;
 
 
 
